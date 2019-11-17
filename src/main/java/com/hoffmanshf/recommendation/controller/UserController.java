@@ -1,5 +1,9 @@
 package com.hoffmanshf.recommendation.controller;
 
+import com.hoffmanshf.recommendation.common.BusinessException;
+import com.hoffmanshf.recommendation.common.enums.BusinessError;
+import com.hoffmanshf.recommendation.common.CommonError;
+import com.hoffmanshf.recommendation.common.CommonResult;
 import com.hoffmanshf.recommendation.model.UserModel;
 import com.hoffmanshf.recommendation.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,9 +25,14 @@ public class UserController {
         return "test";
     }
 
-    @RequestMapping("get")
+    @RequestMapping("/get")
     @ResponseBody
-    public UserModel getUser(@RequestParam(name = "id") Integer id) {
-        return userService.getUser(id);
+    public CommonResult getUser(@RequestParam(name = "id") Integer id) throws BusinessException {
+        UserModel userModel = userService.getUser(id);
+        if (userModel == null) {
+//            return CommonResult.create(new CommonError(BusinessError.OBJECT_NOT_FOUND), "fail");
+            throw new BusinessException(BusinessError.OBJECT_NOT_FOUND);
+        }
+        return CommonResult.create(userModel);
     }
 }
