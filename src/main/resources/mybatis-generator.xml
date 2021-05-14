@@ -5,7 +5,8 @@
 <generatorConfiguration>
 
     <context id="DB2Tables" targetRuntime="MyBatis3">
-        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://127.0.0.1:3306/recommendation" userId="root" password="passw0rd!">
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://127.0.0.1:3306/recommendation"
+                        userId="root" password="passw0rd!">
         </jdbcConnection>
         <!--Generated Data Object files path-->
         <javaModelGenerator targetPackage="com.hoffmanshf.recommendation.model" targetProject="src/main/java">
@@ -17,14 +18,15 @@
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
 
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.hoffmanshf.recommendation.dal" targetProject="src/main/java">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.hoffmanshf.recommendation.dal"
+                             targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
-        <table tableName="user"  domainObjectName="UserModel" enableCountByExample="false"
+        <table tableName="user" domainObjectName="UserModel" enableCountByExample="false"
                enableUpdateByExample="false" enableDeleteByExample="false"
                enableSelectByExample="false" selectByExampleQueryId="false">
-            <generatedKey column="id" sqlStatement="MySql" identity="true" />
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
 
     </context>

@@ -9,9 +9,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserServiceImpl implements UserService {
 
-    private UserModelMapper userModelMapper;
+    private final UserModelMapper userModelMapper;
 
-    @Autowired
     public UserServiceImpl(UserModelMapper userModelMapper) {
         this.userModelMapper = userModelMapper;
     }
