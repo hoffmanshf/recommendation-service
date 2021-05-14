@@ -1,6 +1,7 @@
 package com.hoffmanshf.recommendation.dal;
 
 import com.hoffmanshf.recommendation.model.UserModel;
+import org.apache.ibatis.annotations.Param;
 
 public interface UserModelMapper {
     /**
@@ -50,4 +51,6 @@ public interface UserModelMapper {
      * @mbg.generated Fri Nov 15 00:25:14 EST 2019
      */
     int updateByPrimaryKey(UserModel record);
+
+    UserModel selectByPhoneAndPassword(@Param("phone") String phone, @Param("password")String password);
 }
