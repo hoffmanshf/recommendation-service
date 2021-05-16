@@ -5,7 +5,6 @@ import com.hoffmanshf.recommendation.common.enums.BusinessError;
 import com.hoffmanshf.recommendation.dal.SellerModelMapper;
 import com.hoffmanshf.recommendation.model.SellerModel;
 import com.hoffmanshf.recommendation.service.SellerService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -52,6 +51,11 @@ public class SellerServiceImpl implements SellerService {
         sellerModel.setDisabledFlag(disabledFlag);
         sellerModelMapper.updateByPrimaryKeySelective(sellerModel);
         return sellerModel;
+    }
+
+    @Override
+    public Integer countAllSeller() {
+        return sellerModelMapper.countAllSeller();
     }
 
 }

@@ -1,6 +1,5 @@
 package com.hoffmanshf.recommendation.service;
 
-
 import com.hoffmanshf.recommendation.common.BusinessException;
 import com.hoffmanshf.recommendation.model.SellerModel;
 
@@ -15,5 +14,7 @@ public interface SellerService {
     List<SellerModel> selectAll();
 
     SellerModel changeStatus(Integer id, Integer disabledFlag) throws BusinessException;
+
+    Integer countAllSeller();
 
 }

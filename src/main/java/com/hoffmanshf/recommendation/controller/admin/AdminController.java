@@ -5,6 +5,9 @@ import javax.servlet.http.HttpServletRequest;
 import com.hoffmanshf.recommendation.common.AdminPermission;
 import com.hoffmanshf.recommendation.common.BusinessException;
 import com.hoffmanshf.recommendation.common.enums.BusinessError;
+import com.hoffmanshf.recommendation.service.CategoryService;
+import com.hoffmanshf.recommendation.service.SellerService;
+import com.hoffmanshf.recommendation.service.ShopService;
 import com.hoffmanshf.recommendation.service.UserService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -28,11 +31,20 @@ public class AdminController {
 
     private final UserService userService;
 
+    private final CategoryService categoryService;
+
+    private final ShopService shopService;
+
+    private SellerService sellerService;
+
     public static final String CURRENT_ADMIN_SESSION = "currentAdminSession";
 
-    public AdminController(HttpServletRequest httpServletRequest, UserService userService) {
+    public AdminController(HttpServletRequest httpServletRequest, UserService userService, CategoryService categoryService, ShopService shopService, SellerService sellerService) {
         this.httpServletRequest = httpServletRequest;
         this.userService = userService;
+        this.categoryService = categoryService;
+        this.shopService = shopService;
+        this.sellerService = sellerService;
     }
 
     @RequestMapping("/index")
@@ -40,9 +52,12 @@ public class AdminController {
     public ModelAndView index() {
         ModelAndView modelAndView = new ModelAndView("/admin/admin/index");
 
-        modelAndView.addObject("userCount", userService.countAllUser());
-        modelAndView.addObject("CONTROLLER_NAME", "admin");
-        modelAndView.addObject("ACTION_NAME", "index");
+        modelAndView.addObject("userCount",userService.countAllUser());
+        modelAndView.addObject("shopCount",shopService.countAllShop());
+        modelAndView.addObject("categoryCount",categoryService.countAllCategory());
+        modelAndView.addObject("sellerCount",sellerService.countAllSeller());
+        modelAndView.addObject("CONTROLLER_NAME","admin");
+        modelAndView.addObject("ACTION_NAME","index");
         return modelAndView;
     }
 
