@@ -1,4 +1,4 @@
-package com.hoffmanshf.recommendation.dal;
+package com.hoffmanshf.recommendation.request;
 
 import javax.validation.constraints.NotBlank;
 

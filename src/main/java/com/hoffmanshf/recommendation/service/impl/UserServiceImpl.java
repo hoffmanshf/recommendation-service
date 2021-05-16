@@ -48,4 +48,9 @@ public class UserServiceImpl implements UserService {
         }
         return userModel;
     }
+
+    @Override
+    public Integer countAllUser() {
+        return userModelMapper.countAllUser();
+    }
 }

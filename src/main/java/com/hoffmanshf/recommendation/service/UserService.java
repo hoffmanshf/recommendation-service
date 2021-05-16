@@ -10,4 +10,5 @@ public interface UserService {
 
     UserModel login(String phone,String password) throws BusinessException;
 
+    Integer countAllUser();
 }
